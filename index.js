@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const utils = require('./utils');
+const _ = require('lodash');
 
 const _store = {
     A: { price: 50, label: 'A' },
@@ -64,6 +65,7 @@ app.get('/calculateDiscounts/:items', (req, res) => {
           }
           discounts.push(newObject.discount);
       }); 
+    discounts = _.compact(discounts); // remove any nulls or undefined values from array
     let total = utils.sumFromArray(discounts);
     res.json(total);
 });
