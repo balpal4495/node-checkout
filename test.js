@@ -15,6 +15,7 @@ describe('utility functions', () => {
     it('should turn the string of items into an array', () =>{
         let data = 'DABA';
         let comparisonData = ['D', 'A', 'B', 'A'];
+        data = utils.stringToArray(data);
         assert.deepEqual(data, comparisonData);  
     });
 });
