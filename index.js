@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
 
-
-
 const _store = {
     A: { price: 50, label: 'A' },
     B: { price: 30, label: 'B' },

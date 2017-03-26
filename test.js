@@ -26,8 +26,6 @@ describe('init', () => {
     });
 });
 
-
-
 describe('utility functions', () => {
     it('get sum from an array of numbers', () =>{
         let data = [1, 2, 3, 4, 5];
@@ -40,5 +38,16 @@ describe('utility functions', () => {
         let comparisonData = ['D', 'A', 'B', 'A'];
         data = utils.stringToArray(data);
         assert.deepEqual(data, comparisonData);  
+    });
+});
+
+
+describe('checkout', () => {
+    it('calculate items provided', () =>{
+        return rp(`${BASE_URL}/calculate/DABA`)
+            .then((res) => {
+                let response = JSON.parse(res);
+                assert.equal(response, 145)
+            });
     });
 });
