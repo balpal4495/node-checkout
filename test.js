@@ -50,4 +50,12 @@ describe('checkout', () => {
                 assert.equal(response, 145)
             });
     });
+
+    it('calculate discounts', () =>{
+        return rp(`${BASE_URL}/calculateDiscounts/AAABB`)
+            .then((res) => {
+                let response = JSON.parse(res);
+                assert.equal(response, 35)
+            });
+    });
 });
