@@ -11,4 +11,10 @@ describe('utility functions', () => {
         let sum = utils.sumFromArray(data);
         assert.equal(sum, 15);  
     });
+
+    it('should turn the string of items into an array', () =>{
+        let data = 'DABA';
+        let comparisonData = ['D', 'A', 'B', 'A'];
+        assert.deepEqual(data, comparisonData);  
+    });
 });
