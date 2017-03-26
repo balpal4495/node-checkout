@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const utils = require('./utils');
 
 const _store = {
     A: { price: 50, label: 'A' },
@@ -10,6 +11,18 @@ const _store = {
 
 app.get('/', (req, res) => {
   res.json(_store);
+});
+
+app.get('/calculate/:items', (req, res) => {
+    let _itemString = req.params.items;
+    let _itemArray = utils.stringToArray(_itemString);
+    let _itemPricesArray = [];
+    _itemArray.forEach((item) => {
+        _itemPricesArray.push(_store[item].price);
+    });
+  
+    let total = utils.sumFromArray(_itemPricesArray);
+    res.json(total);
 });
 
 const server = app.listen(3000, () => {
